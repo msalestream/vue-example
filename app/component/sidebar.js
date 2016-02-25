@@ -18,6 +18,9 @@ define(["vue", "model/form-config"], function() {
         methods: {
             changeProduct: function(product) {
                 Form.state.selectedElement = product;
+            },
+            isSelected: function(product) {
+                return this.formState.selectedElement == product;
             }
         }
     });
