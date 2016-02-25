@@ -8,6 +8,9 @@ var includes = [
 define(includes, function() {
     var Vue = require('vue'),
         VueRouter = require('vueRouter');
+
+    Vue.config.debug = true;
+
     //Install Router to Vue
     Vue.use(VueRouter);
 

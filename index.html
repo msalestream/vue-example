@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Vue.js Example</title>
+    <link href="main.css" rel="stylesheet" type="text/css">
     <script src="lib/require.js"></script>
     <script>
         requirejs(['./config'], function () {
@@ -31,7 +32,7 @@
 <template id="sidebar">
     <ul>
         <li v-for="link in sidebar">
-            <a v-on:click="changeProduct(link.product)" style="cursor: pointer;">{{ link.product }}</a>
+            <a v-on:click="changeProduct(link.product)" v-bind:class="[ isSelected(link.product) ? 'selected-product' : '' ]" style="cursor: pointer;">{{ link.product }}</a>
         </li>
     </ul>
 </template>
