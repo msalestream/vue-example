@@ -10,11 +10,28 @@
         });
     </script>
 </head>
+
 <body>
+
+<div id="app">
+    <h2>Vuejs Example</h2>
+    <app-sidebar></app-sidebar>
+    
+    <div style="float: left; width: 20em;">
+        <app-shortcuts></app-shortcuts>
+        <app-state-dump></app-state-dump>
+    </div>
+
+    <div style="float: left;">
+        <app-shortcuts></app-shortcuts>
+        <app-state-dump></app-state-dump>
+    </div>
+</div>
+
 <template id="sidebar">
     <ul>
         <li v-for="link in sidebar">
-            <a v-on:click="changeProduct(link.product)">{{ link.product }}</a>
+            <a v-on:click="changeProduct(link.product)" style="cursor: pointer;">{{ link.product }}</a>
         </li>
     </ul>
 </template>
@@ -26,14 +43,8 @@
 
 <template id="dump">
     <h2>State Dump:</h2>
-    <p>{{ $data.formState | json }}</p>
+    <pre>{{ $data.formState | json }}</pre>
 </template>
 
-<div id="app">
-    <h2>Vuejs Example</h2>
-    <app-sidebar></app-sidebar>
-    <app-shortcuts></app-shortcuts>
-    <app-state-dump></app-state-dump>
-</div>
 </body>
 </html>
