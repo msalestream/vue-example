@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.js Example</title>
+    <script src="lib/require.js"></script>
+    <script>
+        requirejs(['./config'], function () {
+            requirejs(['main']);
+        });
+    </script>
+</head>
+<body>
+<template id="sidebar">
+    <ul>
+        <li v-for="link in sidebar">
+            <a v-on:click="changeProduct(link.product)">{{ link.product }}</a>
+        </li>
+    </ul>
+</template>
+
+<template id="shortcuts">
+    <h2>Selected Product:</h2>
+    <p>{{ $data.formState.selectedElement }}</p>
+</template>
+
+<template id="dump">
+    <h2>State Dump:</h2>
+    <p>{{ $data.formState | json }}</p>
+</template>
+
+<div id="app">
+    <h2>Vuejs Example</h2>
+    <app-sidebar></app-sidebar>
+    <app-shortcuts></app-shortcuts>
+    <app-state-dump></app-state-dump>
+</div>
+</body>
+</html>
