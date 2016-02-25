@@ -32,7 +32,10 @@
 <template id="sidebar">
     <ul>
         <li v-for="link in sidebar">
-            <a v-on:click="changeProduct(link.product)" v-bind:class="[ isSelected(link.product) ? 'selected-product' : '' ]" style="cursor: pointer;">{{ link.product }}</a>
+            <a v-on:click="changeProduct(link.product)" 
+               v-bind:class="[ isSelected(link.product) ? 'selected-product' : '' ]"
+               v-link="{ path: '/product/' + link.product }"
+               style="cursor: pointer;">{{ link.product }}</a>
         </li>
     </ul>
 </template>
