@@ -13,8 +13,31 @@
 <body>
 <template id="sidebar">
     <ul>
-        <li v-for="link in sidebar">
-            <a v-on:click="changeProduct(link.product)">{{ link.product }}</a>
+        <li v-for="product in sidebar">
+            <a v-link="{ path: '/product/' + product.title }"
+               v-bind:class="[ isSelected(product.title) ? 'selected-product' : '' ]">
+               {{ product.title }}
+            </a>
+            <ul>
+                <li v-for="section in product.sections">
+                    <a v-link="{ path: '/product/' + product.title + '/section/' + section.title }"
+                       v-bind:class="[ isSelected(product.title) ? 'selected-product' : '' ]">
+                        {{ section.title }}
+                    </a>
+                    <ul>
+                        <li v-for="field in section.fields">
+                            <a v-link="{path:
+                                '/product/' + product.title +
+                                '/section/' + section.title +
+                                '/field/' + field.title
+                               }"
+                               v-bind:class="[ isSelected(product.title) ? 'selected-product' : '' ]">
+                                {{ field.title }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </li>
     </ul>
 </template>
@@ -26,7 +49,7 @@
 
 <template id="dump">
     <h2>State Dump:</h2>
-    <p>{{ $data.formState | json }}</p>
+    <pre>{{ $data.formState | json }}</pre>
 </template>
 
 <div id="app">

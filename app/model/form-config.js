@@ -4,10 +4,8 @@
 define(function() {
     return {
         state: {
-            selectedElement: null,
-            formConfig: {
-                mock: "Hello"
-            }
+            focus: {},
+            formConfig: {}
         }
     };
 });
