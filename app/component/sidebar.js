@@ -53,8 +53,19 @@ define(["vue", "model/form-config"], function() {
             changeProduct: function(product) {
                 Form.state.focus = product;
             },
-            isSelected: function(product) {
-                return this.formState.focus === product;
+            isSelected: function(product, section, field) {
+                if (field) {
+                    return this.formState.focus['product'] === product.title
+                        && this.formState.focus['section'] === section.title
+                        && this.formState.focus['field'] === field.title;
+                }
+                else if (section) {
+                    return this.formState.focus['product'] === product.title
+                        && this.formState.focus['section'] === section.title;
+                }
+                else if (product) {
+                    return this.formState.focus['product'] === product.title;
+                }
             }
         }
     });
