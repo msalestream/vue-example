@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Vue.js Example</title>
+    <link href="main.css" rel="stylesheet" type="text/css">
     <script src="lib/require.js"></script>
     <script>
         requirejs(['./config'], function () {
@@ -15,13 +16,13 @@
     <ul>
         <li v-for="product in sidebar">
             <a v-link="{ path: '/product/' + product.title }"
-               v-bind:class="[ isSelected(product.title) ? 'selected-product' : '' ]">
+               v-bind:class="[ isSelected(product) ? 'selected-product' : '' ]">
                {{ product.title }}
             </a>
             <ul>
                 <li v-for="section in product.sections">
                     <a v-link="{ path: '/product/' + product.title + '/section/' + section.title }"
-                       v-bind:class="[ isSelected(product.title) ? 'selected-product' : '' ]">
+                       v-bind:class="[ isSelected(product, section) ? 'selected-product' : '' ]">
                         {{ section.title }}
                     </a>
                     <ul>
@@ -31,7 +32,7 @@
                                 '/section/' + section.title +
                                 '/field/' + field.title
                                }"
-                               v-bind:class="[ isSelected(product.title) ? 'selected-product' : '' ]">
+                               v-bind:class="[ isSelected(product, section, field) ? 'selected-product' : '' ]">
                                 {{ field.title }}
                             </a>
                         </li>
